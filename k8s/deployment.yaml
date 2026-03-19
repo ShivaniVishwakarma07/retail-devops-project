@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: retail-app
-          image: ghcr.io/your-org/retail-app:latest
+          image: ghcr.io/shivanivishwakarma07/retail-app:latest
           imagePullPolicy: Always
           ports:
             - containerPort: 7000
