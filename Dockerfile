@@ -4,9 +4,16 @@ WORKDIR /app
 
 COPY package*.json ./
 
+# 🔍 DEBUG: check scripts
+RUN cat package.json
+
 RUN npm install
 
 COPY . .
+
+# 🔍 DEBUG again
+RUN cat package.json
+
 RUN npm run build
 
 FROM node:20-alpine AS runtime
