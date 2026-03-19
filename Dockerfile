@@ -1,28 +1,21 @@
 FROM node:20-alpine AS builder
-
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 
 COPY . .
-
-# ✅ Directly compile TypeScript
-RUN npx tsc
-
+RUN npm run build
 
 FROM node:20-alpine AS runtime
-
 WORKDIR /app
-
 ENV NODE_ENV=production
 
 COPY package*.json ./
-RUN npm install --omit=dev
+RUN npm ci --omit=dev
 
 COPY --from=builder /app/dist ./dist
 COPY public ./public
 
 EXPOSE 7000
-
 CMD ["node", "dist/index.js"]
