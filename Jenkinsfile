@@ -2,7 +2,7 @@ pipeline {
   agent any
 
   environment {
-    AWS_REGION = "ap-south-1"
+    AWS_REGION = "eu-north-1"
     ECR_REPO = "416911024912.dkr.ecr.eu-north-1.amazonaws.com/retail-app"
     IMAGE_TAG = "latest"
   }
