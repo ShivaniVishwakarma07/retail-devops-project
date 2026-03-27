@@ -1,3 +1,9 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: retail-app
+  labels:
+    app: retail-app
 spec:
   replicas: 2
   selector:
@@ -29,5 +35,6 @@ spec:
               port: 7000
             initialDelaySeconds: 15
             periodSeconds: 20
+      # ⚠ Make sure this is exactly like below
       imagePullSecrets:
         - name: ecr-creds
